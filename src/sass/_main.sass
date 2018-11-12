@@ -1,0 +1,45 @@
+
+$breakpoint-1: 768px
+$breakpoint-2: 320px
+
+$space-xsmall:    .25rem
+$space-small:     .5rem
+$space-medium:    1rem
+$space-xmedium:   1.3rem
+$space-large:     1.5rem
+$space-xlarge:    2rem
+$space-xxlarge:   3rem
+
+$border-radius: 2px
+
+$font-primary: 'Slabo 27px', serif
+$font-secondary: 'Krub', sans-serif
+
+$c-dark: #222
+$c-dark-2: #333
+$c-light: #eee
+
+*
+  margin: 0 
+  padding: 0
+  box-sizing: border-box
+  color: inherit
+  font-size: inherit
+  font-family: inherit
+  font-weight: inherit
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+@mixin media($breakpoint)
+  @media screen and (max-width: $breakpoint)
+    @content
+
+body
+  color: $c-dark
+  font-size: 1rem
+  font-family: $font-primary
+  font-weight: 300
+
+img 
+  max-width: 100%
+  display: block
