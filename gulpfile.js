@@ -9,15 +9,15 @@ var
 
   paths = {
   src: 'src/**/*',
-  srcPUG: 'src/**/*.pug',
-  srcSASS: 'src/**/*.scss',
-  srcJS: 'src/**/*.js',
+  srcPUG: ['src/**/*.pug', '!**/_*/**'],
+  srcSASS: 'src/sass/*.scss',
+  srcJS: 'src/js/*.js',
   srcIMG: 'src/img/**/*',
 
-  dist: 'dist',
+  dist: 'dist/',
   distIndex: 'dist/**/*.html',
-  distCSS: 'dist/**/*.css',
-  distJS: 'dist/**/*.js',
+  distCSS: 'dist/css/',
+  distJS: 'dist/js/',
   distIMG: 'dist/img/',
 };
 
@@ -32,6 +32,9 @@ gulp.task('pug', function () {
       this.emit('end');
     })
     .pipe(gulp.dest(paths.dist))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 
@@ -58,7 +61,10 @@ gulp.task('sass', function () {
     .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {
       cascade: true
     }))
-    .pipe(gulp.dest(paths.dist))
+    .pipe(gulp.dest(paths.distCSS))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 
@@ -80,9 +86,9 @@ gulp.task('build', ['clean', 'pug', 'sass', 'img', 'js'])
 // clean
 
 gulp.task('clean', function () {
-  console.log("Clean all files in dist");
-  return del('dist/*', {
-    force: true
+  console.log("Remove all files in dist");
+  return del.sync(['dist/**'], {
+    //force: true
   });
 })
 
@@ -93,7 +99,7 @@ gulp.task('watch', ['sync'], function () {
   gulp.watch(paths.src, ['build']);
 });
 
-gulp.task('default', ['build', 'watch']);
+gulp.task('default', ['clean', 'build', 'watch']);
 
 
 // sync

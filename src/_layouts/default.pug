@@ -1,0 +1,23 @@
+doctype html
+html
+  include ../_includes/data
+
+  block vars
+  
+  head
+    if title 
+      title= title
+    else
+      title Hello
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1")
+    link(rel="stylesheet" href="/css/main.css?v="+ n +"")
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:100,300,400,500,700,900" rel="stylesheet">
+  
+  body
+    #container
+      block content
+    
+    script(type="text/javascript" src="/js/jquery-3.3.1.min.js")
+    script(type="text/javascript" src="/js/main.js?v="+ n +"")

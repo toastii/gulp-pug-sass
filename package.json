@@ -2,7 +2,7 @@
   "name": "new-project",
   "version": "1.0.0",
   "description": "Gulp Sass Pug Browser-Sync Project",
-  "main": "gulpfile.js",
+  "main": "index.js",
   "scripts": {
     "test": "test"
   },
