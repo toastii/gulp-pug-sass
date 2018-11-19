@@ -6,6 +6,7 @@ var
   sass = require('gulp-sass'),
   browserSync = require('browser-sync'),
   del = require('del'),
+  plumber = require('gulp-plumber'),
 
   paths = {
   src: 'src/**/*',
@@ -26,6 +27,7 @@ var
 
 gulp.task('pug', function () {
   return gulp.src(paths.srcPUG)
+    .pipe(plumber())
     .pipe(pug())
     .on('error', function (err) {
       process.stderr.write(err.message + '\n');
@@ -42,6 +44,7 @@ gulp.task('pug', function () {
 
 gulp.task('img', function () {
   return gulp.src(paths.srcIMG)
+    .pipe(plumber())
     .pipe(imagemin({
       optimizationLevel: 5
     }))
@@ -56,6 +59,7 @@ gulp.task('img', function () {
 
 gulp.task('sass', function () {
   return gulp.src(paths.srcSASS)
+    .pipe(plumber())
     .pipe(sass())
     .on('error', sass.logError)
     .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {
@@ -72,6 +76,7 @@ gulp.task('sass', function () {
 
 gulp.task('js', function () {
   gulp.src(paths.srcJS)
+    .pipe(plumber())
     .pipe(gulp.dest(paths.distJS))
     .pipe(browserSync.reload({
       stream: true
