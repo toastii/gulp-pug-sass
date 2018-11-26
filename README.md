@@ -10,6 +10,7 @@
 
 ### Packages
 
+- gulp
 - pug
 - sass
 - browser-sync
@@ -17,3 +18,6 @@
 - imagemin
 - del
 - plumber
+- rename
+- sourcemaps
+- clean-css (minify)
