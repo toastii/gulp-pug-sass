@@ -7,6 +7,9 @@ var
   browserSync = require('browser-sync'),
   del = require('del'),
   plumber = require('gulp-plumber'),
+  rename = require('gulp-rename'),
+  sourcemaps = require('gulp-sourcemaps'),
+  cleanCSS = require('gulp-clean-css'),
 
   paths = {
   src: 'src/**/*',
@@ -15,8 +18,12 @@ var
   srcJS: 'src/js/*.js',
   srcIMG: 'src/img/**/*',
 
+  tmp: 'tmp/',
+  tmpCSS: 'tmp/css/',
+  tmpJS: 'tmp/js/',
+  tmpIMG: 'tmp/img/',
+
   dist: 'dist/',
-  distIndex: 'dist/**/*.html',
   distCSS: 'dist/css/',
   distJS: 'dist/js/',
   distIMG: 'dist/img/',
@@ -60,11 +67,16 @@ gulp.task('img', function () {
 gulp.task('sass', function () {
   return gulp.src(paths.srcSASS)
     .pipe(plumber())
+    .pipe(sourcemaps.init())
     .pipe(sass())
     .on('error', sass.logError)
     .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {
       cascade: true
     }))
+    .pipe(gulp.dest(paths.distCSS))
+    .pipe(cleanCSS())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.distCSS))
     .pipe(browserSync.reload({
       stream: true
