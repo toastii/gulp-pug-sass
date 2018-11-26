@@ -20,4 +20,6 @@
 - plumber
 - rename
 - sourcemaps
-- clean-css (minify)
+- uglifycss
+- uglify
+- environments

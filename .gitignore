@@ -4,3 +4,4 @@ node_modules
 *.thumb
 npm-debug.log
 dist/
+tmp/
