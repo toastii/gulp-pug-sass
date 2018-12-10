@@ -4,6 +4,7 @@
 
 - Run `npm install` from the directory to install.
 - Run `gulp` to start the server.
+- Run `gulp build` to build for production with minified files.
 
 - Run `npm rebuild` when changing OS
 
