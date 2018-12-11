@@ -1,0 +1,10 @@
+#nav 
+  #nav-wrapper 
+    #nav__logo
+      img(src="./img/assets/logo.png")
+    #nav__items
+      each item in nav_items 
+        a(
+          href=item.url 
+          class=(site === item.text) ? "nav-item--active" : null
+        ).nav-item= item.text

@@ -1,8 +1,34 @@
 extends _layouts/default
 
 block vars
-  - var title = 'Hello World'
+  - var title = ''
+  - var site = 'Home'
 
 block content
 
-  h1 HELLO WORLD
+  .section.section__banner
+    .data-grid
+      .data-grid__main.site-padding
+        .float-right
+          h3.site-headline.site-headline--top Über Uns
+
+          p <a class="link" href="swetlana.html">Swetlana Wolf</a> (Violine), <a href="elena.html" class="link">Elena Wisner</a> (Violoncello) und <a href="dimitar.html" class="link">Dimitar Kuscheff</a> (Klavier) formierten sich 2011 zum Klaviertrio "Wolf & Wisner & Kuscheff", welches später in "Klaviertrio Regensburg" umbenannt wurde. Alle drei konzertierten seit vielen Jahren sehr erfolgreich sowohl solistisch als auch in Ensembles und Orchestern.
+
+          p Als neues Ensemble legen sie nun ihren Schwerpunkt auf russische Kammermusik von der Romantik bis zur Moderne, darunter auch selten gespielte Kompositionen.
+
+          p Der oft mystische Tonfall der russischen Musik erfordert ein tiefes Einfühlungsvermögen, das allen drei Interpreten in ihrer Laufbahn, geprägt vom osteuropäischen Raum, mitgegeben wurde. Schwermut, Pathos, tiefgehende Sentimentalität, aber auch warme und leuchtende Emotionen verstehen sie perfekt auf ihren Instrumenten klanglich umzusetzen.
+
+          p Zum Einsatz kommen dazu auch eine Violine von Alessandro Gagliano aus dem Jahr 1725, zur Verfügung gestellt von der Firma Geigenbau Goldfuss, und ein Cello aus dem Jahr 2003 von Thomas Goldfuss, der für das Instrument einen 1. Preis in Cremona (Italien) erhielt.
+
+          p Das Ziel des ausdruckstarken Trios ist es, dem Zuhörer einen Zugang zur Mentalität der russischen Musik zu eröffnen.
+
+          p Ebenso intensiv und meisterhaft setzen sie sich aber auch mit anderen bekannten europäischen Komponisten auseinander und bringen in Perfektion auch deren wenig gespielte Werke ans Licht.
+
+      .data-grid__side
+        .img.img--skew 
+          img(src="./img/group_01.jpg")
+
+
+
+
+

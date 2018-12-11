@@ -1,0 +1,24 @@
+extends _layouts/default
+
+block vars
+  - var title = ''
+  - var site = 'Repertoire'
+
+block content
+
+  .section.section__repertoire.max-width.site-padding
+    h2.site-headline.site-headline--top Repertoire
+    .repertoires 
+      each repertoire in repertoires 
+        .repertoire 
+          h2.repertoire__title= repertoire.title 
+          ul.repertoire__list
+            if repertoire.deep
+              each item in repertoire.items
+                ul 
+                  li.repertoire__list-item.repertoire__list-item-title= item.title
+                  li.repertoire__list-item.repertoire__list-item-text= item.text
+            else 
+              ul
+                each item in repertoire.items
+                  li.repertoire__list-item.repertoire__list-item-text= item
