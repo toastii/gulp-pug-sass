@@ -1,145 +1,132 @@
-var
+const
   gulp = require('gulp'),
-  imagemin = require('gulp-imagemin'),
   pug = require('gulp-pug'),
   prefix = require('gulp-autoprefixer'),
   sass = require('gulp-sass'),
-  browserSync = require('browser-sync'),
+  browsersync = require('browser-sync'),
   del = require('del'),
   plumber = require('gulp-plumber'),
-  rename = require('gulp-rename'),
-  sourcemaps = require('gulp-sourcemaps'),
-  uglify = require('gulp-uglify'),
-  environments = require('gulp-environments'),
-  uglifycss = require('gulp-uglifycss'),
 
   paths = {
-  src: 'src/**/*',
-  srcPUG: ['src/**/*.pug', '!**/_*/**'],
-  srcSASS: 'src/sass/*.scss',
-  srcJS: 'src/js/*.js',
-  srcIMG: 'src/img/**/*',
+    src: 'src/**/*',
+    srcPUG: ['src/**/*.pug', '!**/_*/**'],
+    srcSASS: 'src/sass/*.scss',
+    srcJS: 'src/js/*.js',
+    srcPHP: 'src/php/*.php',
+    srcIMG: 'src/img/**/*',
 
-  tmp: 'tmp/',
-  tmpCSS: 'tmp/css/',
-  tmpJS: 'tmp/js/',
-  tmpIMG: 'tmp/img/',
+    tmp: 'tmp/',
+    tmpCSS: 'tmp/css/',
+    tmpJS: 'tmp/js/',
+    tmpPHP: 'tmp/php/',
+    tmpIMG: 'tmp/img/',
 
-  dist: 'dist/',
-  distCSS: 'dist/css/',
-  distJS: 'dist/js/',
-  distIMG: 'dist/img/',
-};
+    dist: 'dist/',
+    distCSS: 'dist/css/',
+    distJS: 'dist/js/',
+    distPHP: 'dist/php/',
+    distIMG: 'dist/img/',
+  };
 
-var development = environments.development;
-var production = environments.production;
+function browserSync(done) {
+  browsersync.init({
+    server: {
+      baseDir: paths.dist,
+      reloadDelay: 100,
+      //directory: true
+      snippetOptions: {
+        whitelist: ["/**"],
+      },
+    },
+    port: 3000
+  });
+  done();
+}
 
+// BrowserSync Reload
+function browserSyncReload(done) {
+  browsersync.reload();
+  done();
+}
 
-// pug
+// Clean
+function clean() {
+  return del([paths.dist]);
+}
 
-gulp.task('pug', function () {
+// pug 
+function task_pug(){
   return gulp.src(paths.srcPUG)
     .pipe(plumber())
-    .pipe(development(pug({
-      pretty: true
-    })))
-    .pipe(production(pug()))
+    .pipe(pug())
     .on('error', function (err) {
       process.stderr.write(err.message + '\n');
       this.emit('end');
     })
-    .pipe(development(gulp.dest(paths.tmp)))
-    .pipe(production(gulp.dest(paths.dist)))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-});
+    .pipe(gulp.dest(paths.dist))
+    .pipe(browsersync.stream());
+}
 
+// php 
+function task_php(){
+  return gulp.src(paths.srcPHP)
+    .pipe(plumber())
+    .pipe(gulp.dest(paths.distPHP))
+    .pipe(browsersync.stream());
+}
 
-// sass
+// Images
+function images() {
+  return gulp.src(paths.srcIMG)
+    .pipe(plumber())
+    .pipe(gulp.dest(paths.distIMG))
+    .pipe(browsersync.stream());
+}
 
-gulp.task('sass', function () {
+// favicon
+function favicon(){
+  return gulp.src('./src/*.ico')
+    .pipe(plumber())
+    .pipe(gulp.dest(paths.dist))
+    .pipe(browsersync.stream());
+}
+
+// CSS task
+function task_sass() {
   return gulp.src(paths.srcSASS)
     .pipe(plumber())
-    .pipe(sourcemaps.init())
     .pipe(sass())
     .on('error', sass.logError)
     .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {
       cascade: true
     }))
-    .pipe(production(uglifycss({
-      "maxLineLen": 80,
-    })))
-    //.pipe(production(rename({suffix: '.min'})))
-    .pipe(sourcemaps.write('.'))
-    .pipe(production(gulp.dest(paths.distCSS)))
-    .pipe(development(gulp.dest(paths.tmpCSS)))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-});
+    .pipe(gulp.dest(paths.distCSS))
+    .pipe(browsersync.stream());
+}
 
-
-// js
-
-gulp.task('js', function () {
-  gulp.src(paths.srcJS)
+// JS
+function task_js() {
+  return gulp.src(paths.srcJS)
     .pipe(plumber())
-    .pipe(production(uglify()))
-    .pipe(development(gulp.dest(paths.tmpJS)))
-    .pipe(production(gulp.dest(paths.distJS)))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-});
+    .pipe(gulp.dest(paths.distJS))
+    .pipe(browsersync.stream())
+}
 
+// define complex tasks
+const js = gulp.series(task_js);
+const build = gulp.series(clean, gulp.parallel(task_pug, task_php, task_sass, images, favicon, js));
+const watch = gulp.parallel(build, watchFiles, browserSync);
 
-// img
+// Watch files
+function watchFiles() {
+  gulp.watch(paths.src, build);
+}
 
-gulp.task('img', function () {
-  return gulp.src(paths.srcIMG)
-    .pipe(plumber())
-    .pipe(imagemin({
-      optimizationLevel: 5
-    }))
-    .pipe(production(gulp.dest(paths.distIMG)))
-    .pipe(development(gulp.dest(paths.tmpIMG)))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-});
-
-// build
-
-gulp.task('build', ['clean', 'pug', 'sass', 'img', 'js'])
-
-
-// clean
-
-gulp.task('clean', function () {
-  console.log("Remove all files in dist/ and tmp/");
-  return del.sync(['dist/**', 'tmp/**'], {
-    //force: true
-  });
-})
-
-
-// watch
-
-gulp.task('watch', ['sync'], function () {
-  gulp.watch(paths.src, ['build']);
-});
-
-gulp.task('default', ['clean', 'build', 'watch']);
-
-
-// sync
-
-gulp.task('sync', function () {
-  browserSync({
-    server: {
-      baseDir: paths.tmp
-    },
-    notify: false
-  });
-});
+// export tasks
+exports.images = images;
+exports.sass = task_sass;
+exports.js = js;
+exports.clean = clean;
+exports.build = build;
+exports.watch = watch;
+exports.default = build;

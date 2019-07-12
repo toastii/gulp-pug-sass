@@ -1,26 +1,7 @@
-# gulp-pug-sass
+- change directory in .gitlab-ci.yml
 
-### Start
+- npm install gulp-cli@2.0.1 -g
 
-- Run `npm install` from the directory to install.
-- Run `gulp` to start the server.
-- Run `gulp build` to build for production with minified files.
+- npm install
 
-- Run `npm rebuild` when changing OS
-
-
-### Packages
-
-- gulp
-- pug
-- sass
-- browser-sync
-- autoprefixer
-- imagemin
-- del
-- plumber
-- rename
-- sourcemaps
-- uglifycss
-- uglify
-- environments
+- gulp watch

@@ -1,1 +1,37 @@
+
+$font-sizes: (
+  xsmall: .7rem,
+  small:    .8rem,
+  medium:   .9rem,
+  base:     1rem,
+  large:    1.2rem,
+  xlarge:   1.5rem,
+  xxlarge:  2rem,
+);
+
+@each $element, $size in $font-sizes {
+  .fs--#{$element} {
+    font-size: $size;
+  }
+}
+
+
+$spacings: (
+  xsmall:    .25rem,
+  small:     .5rem,
+  medium:    1rem,
+  xmedium:   1.3rem,
+  large:     1.5rem,
+  xlarge:    2rem,
+  xxlarge:   3rem,
+  xxxlarge:  5rem,
+);
+
+@each $element, $size in $spacings {
+  .padding--#{$element} {
+    padding: $size;
+  }
+}
+
+
 @import "_main";

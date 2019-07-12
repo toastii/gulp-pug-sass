@@ -1,27 +1,40 @@
 
 $breakpoint-1: 769px
 $breakpoint-2: 600px
+$breakpoint-3: 400px
 
+$space-xxsmall:   .15rem
 $space-xsmall:    .25rem
 $space-small:     .5rem
 $space-medium:    1rem
 $space-xmedium:   1.3rem
 $space-large:     1.5rem
 $space-xlarge:    2rem
-$space-xxlarge:   3rem
+$space-xxlarge:   5rem
+$space-xxxlarge:  7rem
 
 $border-radius: 2px
+$border-width: 2px
 
-$font-primary: 'Montserrat', sans-serif
-$font-alternative: 'Playfair Display', serif
+$font-sans: 'Lato', sans-serif
+$font-serif: 'Cormorant', serif
 
 $c-dark: #222
-$c-dark-2: #333
-$c-light: #DADBD3
-$c-light-2: #E6E7DF
+$c-dark2: #555
+$c-lighter: #EFEFEF
+$c-light: #E7E7E7
+$c-transparent: rgba(255,255,255,.5)
 
-$c-primary: #0E1D21
+$c-primary: #CE0000
 $c-secondary: #193038
+
+$transition-slow: 0
+
+$max-width: 900px
+
+@mixin ls
+  letter-spacing: $space-xxsmall
+
 
 *
   margin: 0 
@@ -33,189 +46,22 @@ $c-secondary: #193038
   font-weight: inherit
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+  &:focus
+    outline: none
 
 @mixin media($breakpoint)
   @media screen and (max-width: $breakpoint)
     @content
 
+html
+
 body
-  color: $c-dark
-  font-size: 1rem
-  font-family: $font-primary
+  color: $c-secondary
+  font-size: 14px
+  font-family: $font-sans
   font-weight: 300
-  background: $c-light-2
-
-img 
-  max-width: 100%
-  display: block
-
-a.link
-  text-decoration: none
-  //border-bottom: 2px solid $c-primary
-  font-weight: bold
-  transition: .2s ease-in-out
-  display: inline-block
-  transform-origin: center
-  position: relative
-  color: $c-secondary
-  &:hover
-    transform: scale(.97)
-
-h1 
-  font-size: 3rem
-h3 
-
-p 
-  margin-bottom: $space-medium
-  max-width: 600px
-  line-height: 1.6rem
-  text-align: justify
-  @include media($breakpoint-1)
-    text-align: left
-
-.data-grid
-  display: flex
-  .data-grid__main
-    width: 55%
-  .data-grid__side
-    width: 45%
-  @include media($breakpoint-1)
-    flex-wrap: wrap
-    .data-grid__main,
-    .data-grid__side
-      width: 100%
-
-.site-headline
-  font-size: 2rem
-  margin-bottom: $space-small
-  color: $c-secondary
-  font-family: $font-alternative
-  letter-spacing: $space-xsmall
-  &.site-headline--top
-    display: inline-block
-    background: $c-light-2
-    z-index: 2
-    padding: $space-medium $space-large
-    margin-left: -$space-medium
-    transform: translatey(-$space-xxlarge)
-    @include media($breakpoint-1)
-      transform: none
-      margin-left: -$space-medium
-      border-left: $space-xsmall solid $c-primary
-      padding: 0 $space-small
-
-
-
-.max-width
-  max-width: 900px
-  margin: 0 auto
-
-.float-right
-  float: right
-
-.float-left
-  float: left
-
-.site-padding
-  padding: $space-medium $space-xlarge
-  @include media($breakpoint-1)
-    padding: $space-medium
-
-.shadow
-  box-shadow: 0 0 20px rgba(0,0,0,0.3)
-  z-index: 2
-
-.img
-  .img--skew
-    width: 100%
-
-#hero
-  width: 100%
-  height: 500px
-  background: #111111 url('../img/piano_02.jpg') top/cover no-repeat 
-  position: relative
-  @include media($breakpoint-1)
-    height: 200px
-
-#nav 
-  //background: $c-dark
-  font-family: $font-alternative
-  position: absolute
-  left: 50%
-  top: 50%
-  transform: translate(-50%, -50%)
-  width: 90%
-  @include media($breakpoint-1)
-    width: 100%
-  #nav-wrapper
-    font-size: 0
-    padding: $space-medium
-    text-align: center
-    #nav__logo
-      width: 8rem
-      margin: 0 auto
-      margin-bottom: $space-medium 
-    #nav__items
-      border-top: 1px solid $c-light
-      .nav-item
-        font-size: 1rem
-        padding: $space-medium $space-medium
-        color: $c-dark
-        display: inline-block
-        text-decoration: none
-        transition: .3s ease-in-out
-        color: $c-light
-        &:hover
-          color: $c-light-2
-          //font-weight: bold
-        &.nav-item--active
-          font-weight: bold
-        @include media($breakpoint-1)
-          font-size: .8rem
-          padding: $space-small
-
-#container
-  width: 100%
-  margin: 0 auto
-
-.repertoires
-  display: flex
-  flex-wrap: wrap
-  .repertoire
-    width: 33.333333%
-    margin-bottom: $space-large
-    padding: $space-medium
-    .repertoire__title
-      font-size: 1.1rem
-      margin-bottom: $space-medium
-      color: $c-secondary
-      font-family: $font-alternative
-      letter-spacing: $space-xsmall
-    .repertoire__list
-      padding-left: $space-xsmall
-      .repertoire__list-item
-        list-style-type: none
-        font-size: .9rem
-        &.repertoire__list-item-text
-          margin-bottom: $space-medium
-        &.repertoire__list-item-title
-          font-weight: 500
-
-    @include media($breakpoint-1)
-      width: 50%
-      .repertoire__title
-        font-size: .9rem
-      .repertoire__list
-        .repertoire__list-item
-          font-size: .9rem
-    @include media($breakpoint-2)
-      width: 100%
-      margin-bottom: 0
-      padding: $space-small
-      .repertoire__title
-        margin-bottom: $space-xsmall
-
-
+  background: $c-lighter
+  background: $c-lighter url(../img/assets/noise.png) repeat
 
 ::-webkit-scrollbar
 	height: 6px
@@ -229,9 +75,9 @@ p
 	height: 2px
 	width: 4px
 	padding: 1px 0
-	border-top: 1px solid #fff
-	border-bottom: 1px solid #fff
-	background: #fff
+	border-top: 1px solid $c-lighter
+	border-bottom: 1px solid $c-lighter
+	background: $c-lighter
 ::-webkit-scrollbar-button
 	background: transparent
 	display: none
