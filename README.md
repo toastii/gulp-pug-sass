@@ -4,6 +4,11 @@ This is a simple starter project using **Pug**, **Sass/Scss** and **browser-sync
 
 if you don't have **node.js** you can get it [here](https://nodejs.org).
 
+
+## Getting started
+
+Execute:
+
 - npm install gulp
 
 - npm install
