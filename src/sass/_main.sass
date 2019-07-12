@@ -1,8 +1,4 @@
-
-$breakpoint-1: 769px
-$breakpoint-2: 600px
-$breakpoint-3: 400px
-
+// MEASUREMENTS
 $space-xxsmall:   .15rem
 $space-xsmall:    .25rem
 $space-small:     .5rem
@@ -16,9 +12,11 @@ $space-xxxlarge:  7rem
 $border-radius: 2px
 $border-width: 2px
 
-$font-sans: 'Lato', sans-serif
-$font-serif: 'Cormorant', serif
+// FONTS
+$font-primary: 'Lato', sans-serif
+$font-secondary: 'Cormorant', serif
 
+// COLORS
 $c-dark: #222
 $c-dark2: #555
 $c-lighter: #EFEFEF
@@ -28,13 +26,18 @@ $c-transparent: rgba(255,255,255,.5)
 $c-primary: #CE0000
 $c-secondary: #193038
 
-$transition-slow: 0
 
+// BREAKPOINTS
+$breakpoint-md: 768px
+
+// WIDTHS
 $max-width: 900px
 
-@mixin ls
-  letter-spacing: $space-xxsmall
+@mixin media($breakpoint)
+  @media screen and (max-width: $breakpoint)
+    @content
 
+/* ----------------------------------------------- */
 
 *
   margin: 0 
@@ -46,38 +49,18 @@ $max-width: 900px
   font-weight: inherit
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  &:focus
-    outline: none
-
-@mixin media($breakpoint)
-  @media screen and (max-width: $breakpoint)
-    @content
 
 html
 
 body
-  color: $c-secondary
+  color: $c-dark
   font-size: 14px
-  font-family: $font-sans
-  font-weight: 300
-  background: $c-lighter
-  background: $c-lighter url(../img/assets/noise.png) repeat
+  font-family: $font-primary
 
-::-webkit-scrollbar
-	height: 6px
-	width: 4px
-	background: transparent
-::-webkit-scrollbar-thumb
-	background: $c-secondary
-	height: 6px
-	width: 4px
-::-webkit-scrollbar-track
-	height: 2px
-	width: 4px
-	padding: 1px 0
-	border-top: 1px solid $c-lighter
-	border-bottom: 1px solid $c-lighter
-	background: $c-lighter
-::-webkit-scrollbar-button
-	background: transparent
-	display: none
+h1
+  font-size: 5em
+  text-align: center
+  margin: $space-xlarge
+  @include media($breakpoint-md)
+    font-size: 3em
+    margin: $space-xlarge $space-medium

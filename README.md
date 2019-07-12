@@ -1,6 +1,6 @@
 ### Gulp Pug Sass
 
-- npm install gulp-cli@2.0.1 -g
+- npm install gulp
 
 - npm install
 
