@@ -1,21 +1,22 @@
 
-## Getting started
+### Getting started
 
 if you don't have **node.js** you can get it [here](https://nodejs.org).
 
-`npm i`<br />
-`gulp watch` / `gulp s` / `gulp serve`
+`cd path/to/your/directory`  
+`npm i`  
+`gulp s`
 
-## Environments
+### Environments
 
-options: <br />
-`--development` (default, not needed) <br />
-`--production` (will use uglify etc.) <br />  
+**Options:**  
+`--development` (default, not needed)  
+`--production` (will use uglify etc.)  
 
-example: <br />
+**Example:**  
 `gulp build --production`
 
-## What it does
+### What it does
 
 `gulp watch`, `gulp s` or `gulp serve` will build the project and then start a local server which refreshes the page if you change files. CSS will be injected without a refresh so you can keep your page state.
 
@@ -24,11 +25,7 @@ Using the `--production` flag will:
 - remove logging from js
 - output to `/dist`
 
-## Deployment
-
-Pushing to master will deploy via gitlab-cli.
-
-## Packages
+### Dependencies
 
 - @babel/core
 - @babel/preset-env
