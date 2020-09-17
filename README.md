@@ -3,7 +3,6 @@
 
 if you don't have **node.js** you can get it [here](https://nodejs.org).
 
-`npm install --global gulp-cli`<br />
 `npm i`<br />
 `gulp watch` / `gulp s` / `gulp serve`
 
