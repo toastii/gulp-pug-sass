@@ -3,7 +3,6 @@
 
 if you don't have **node.js** you can get it [here](https://nodejs.org).
 
-Execute:<br />
 `npm install --global gulp-cli`<br />
 `npm i`<br />
 `gulp watch` / `gulp s` / `gulp serve`
@@ -43,15 +42,12 @@ Pushing to master will deploy via gitlab-cli.
 - gulp-autoprefixer
 - gulp-babel
 - gulp-clean-css
+- gulp-cli
 - gulp-concat
 - gulp-mode
 - gulp-plumber
 - gulp-pug
 - gulp-sass
-- gulp-shell
 - gulp-uglify
-
-## Dependencies
-
-- gulp-cli
 - gulp-uglifycss
+- npm-check-updates
