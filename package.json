@@ -1,0 +1,49 @@
+{
+  "name": "gulp-pug-sass",
+  "version": "1.0.0",
+  "description": "Gulp Sass Pug Browser-Sync Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toastii/gulp-pug-sass.git"
+  },
+  "keywords": [
+    "gulp",
+    "sass",
+    "pug",
+    "browsersync"
+  ],
+  "author": "Florian Weigelt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toastii/gulp-pug-sass/issues"
+  },
+  "homepage": "https://github.com/toastii/gulp-pug-sass#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.26.12",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-mode": "^1.0.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "npm-check-updates": "^9.0.1"
+  },
+  "dependencies": {
+    "gulp-cli": "^2.3.0",
+    "gulp-uglifycss": "^1.1.0"
+  }
+}

@@ -1,0 +1,18 @@
+doctype html
+html
+  include ../includes/data
+
+  block settings
+  
+  head
+    include ../includes/head
+  
+  body
+
+    unless noHeader
+      include ../includes/header.pug
+    #content
+      block content
+
+      include ../includes/footer.pug
+      script(type="text/javascript" src="./js/main.js?v="+ n)
