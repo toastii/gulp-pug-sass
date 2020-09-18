@@ -1,18 +1,18 @@
 doctype html
 html
-  include ../includes/data
+  include ../_includes/data
 
   block settings
   
   head
-    include ../includes/head
+    include ../_includes/head
   
   body
 
     unless noHeader
-      include ../includes/header.pug
+      include ../_includes/header.pug
     #content
       block content
 
-      include ../includes/footer.pug
+      include ../_includes/footer.pug
       script(type="text/javascript" src="./js/main.js?v="+ n)
