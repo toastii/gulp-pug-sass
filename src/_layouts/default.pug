@@ -1,5 +1,5 @@
 doctype html
-html
+html(lang="en")
   include ../_includes/data
 
   block settings
@@ -15,4 +15,4 @@ html
       block content
 
       include ../_includes/footer.pug
-      script(type="text/javascript" src="./js/main.js?v="+ n)
+      script(type="text/javascript" src="./js/main.js" + v)
