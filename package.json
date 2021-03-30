@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/toastii/gulp-pug-sass#readme",
   "dependencies": {
-    "@babel/core": "^7.13.8",
-    "@babel/preset-env": "^7.13.9",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
@@ -41,6 +41,6 @@
     "gulp-sass": "^4.1.0",
     "gulp-uglify": "^3.0.2",
     "gulp-uglifycss": "^1.1.0",
-    "npm-check-updates": "^11.1.10"
+    "npm-check-updates": "^11.3.0"
   }
 }
