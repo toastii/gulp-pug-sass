@@ -2,7 +2,7 @@ const
   gulp = require('gulp'),
   pug = require('gulp-pug'),
   prefix = require('gulp-autoprefixer'),
-  sass = require('gulp-sass'),
+  sass = require('gulp-sass')(require('sass')),
   browsersync = require('browser-sync'),
   del = require('del'),
   plumber = require('gulp-plumber'),
